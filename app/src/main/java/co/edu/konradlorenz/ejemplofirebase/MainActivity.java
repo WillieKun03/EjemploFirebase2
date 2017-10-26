@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         // Get a reference to the todoItems child items it the database
-        final DatabaseReference myRef = database.getReference("todoItems");
+        final DatabaseReference myRef = database.getReference("506131015");
+        final DatabaseReference othRef= database.getReference("506131015");
 
         // Assign a listener to detect changes to the child items
         // of the database reference.
@@ -82,12 +83,15 @@ public class MainActivity extends AppCompatActivity {
         // Add items via the Button and EditText at the bottom of the window.
         final EditText text = (EditText) findViewById(R.id.todoText);
         final Button button = (Button) findViewById(R.id.addButton);
+        final EditText oText= (EditText) findViewById(R.id.todoOtherText);
+        final Button button1= (Button) findViewById(R.id.addOhterButton);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 // Create a new child with a auto-generated ID.
                 DatabaseReference childRef = myRef.push();
+                DatabaseReference childRef = othRef.push();
 
                 // Set the child's data to the value passed in from the text box.
                 childRef.setValue(text.getText().toString());
